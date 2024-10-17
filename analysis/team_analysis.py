@@ -13,8 +13,6 @@ from utils import read_data
 deliveries = read_data.deliveries_data()
 matches = read_data.matches_data()
 
-most_wins_against_teams = pd.concat([pd.crosstab(matches.team1, matches.team2).idxmax(axis=1), pd.crosstab(matches.team1, matches.team2).max(axis=1)], axis=1)
-
 
 def number_of_matches_played(team):
     return matches[(matches.team1 == team) | (matches.team2 == team)]['id'].nunique()
@@ -23,14 +21,21 @@ def number_of_matches_played(team):
 def match_won(team):
     return matches.winner.value_counts().loc[team]
 
-
 def win_percentage(team):
     return round(match_won(team)/number_of_matches_played(team) * 100, 2)
 
 
 def most_wins(team):
-    return most_wins_against_teams.loc[team].values
+    # Calculate the crosstab once and reuse it
+    crosstab_result = pd.crosstab(matches.team1, matches.team2)
 
+    # Create a DataFrame with the team having the most wins and the number of wins
+    most_wins_against_teams = pd.DataFrame({
+        'Against the team ': crosstab_result.idxmax(axis=1),
+        'Number of Wins': crosstab_result.max(axis=1),
+    })
+
+    return most_wins_against_teams.loc[team]
 
 def matches_per_season(team):
     return matches[(matches.team1 == team) | (matches.team2 == team)]['season'].value_counts().sort_index().reset_index()
@@ -43,7 +48,6 @@ def most_matches_won_at_venue(team):
 def num_of_trophies(team):
     return matches[matches.match_type == 'Final']['winner'].value_counts().loc[team]
 
-@lru_cache
 def match_and_toss(team):
     lu = matches[(matches.toss_winner == team) & (matches.winner == team)].count().values[0]
     ll = matches[(matches.toss_winner == team) & (matches.winner != team)].count().values[0]
