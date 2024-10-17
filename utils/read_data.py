@@ -6,11 +6,8 @@ import os
 current_dir = os.getcwd()
 sys.path.append(os.path.join(current_dir))
 
-print(os.getcwd())
-
 def matches_data():
     matches = pd.read_parquet("data\\processed\\matches.parquet")
-
     return matches
 
 
