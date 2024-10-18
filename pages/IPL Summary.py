@@ -12,4 +12,4 @@ from analysis import IPL_Summary
 try:
     st.write(IPL_Summary.get_most_100s())
 except Exception as e:
-    print(Exception)
+    st.write(Exception)
