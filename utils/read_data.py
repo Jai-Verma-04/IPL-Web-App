@@ -11,8 +11,8 @@ import os
 import functools
 
 # Setting the current working directory as system path
-# current_dir = os.getcwd()
-# sys.path.append(os.path.join(current_dir))
+current_dir = os.getcwd()
+sys.path.append(os.path.join(current_dir))
 
 
 def matches_data():
@@ -37,11 +37,8 @@ def deliveries_data():
     Returns:
     Dataframe: deliveries.parquet file as a dataframe.
     '''
-    try:
-        deliveries = pd.read_parquet("data\\processed\\deliveries.parquet")
-    except Exception as e:
-        return e
+
+    deliveries = pd.read_parquet("data\\processed\\deliveries.parquet")
+
     
     return deliveries
-
-print(deliveries_data())

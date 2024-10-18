@@ -13,13 +13,13 @@ import sys
 import pandas as pd
 
 
-# importing read_data from utils to read the data from the parquet files.
-from utils import read_data     
-
-
 # Setting the current working directory as system path
 current_dir = os.getcwd()
 sys.path.append(os.path.join(current_dir))
+
+
+# importing read_data from utils to read the data from the parquet files.
+from utils import read_data     
 
 
 # reading data files using read_data module

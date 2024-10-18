@@ -11,21 +11,21 @@
 import os
 import sys
 
+# Setting the system path as current working directory
+current_dir = os.getcwd()
+sys.path.append(os.path.join(current_dir))
 
 # importing read_data from utils to read the data from the parquet files
 from utils import read_data
 
 
-# Setting the system path as current working directory
-current_dir = os.getcwd()
-sys.path.append(os.path.join(current_dir))
 
 
 # reading data files using read_data module
 deliveries = read_data.deliveries_data()
 matches = read_data.matches_data()
 
-
+print(deliveries)
 # batsman scores for each match and inning
 # batsman_scores = deliveries.groupby(['match_id', 'inning', 'batter'])['batsman_runs'].sum().reset_index()
 
