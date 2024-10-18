@@ -27,7 +27,6 @@ matches = read_data.matches_data()
 
 
 # batsman scores for each match and inning
-# batsman_scores = deliveries.groupby(['match_id', 'inning', 'batter'])['batsman_runs'].sum().reset_index()
 
 
 #-------------------------------------------------------------------------------------#
@@ -151,6 +150,7 @@ def get_highest_individual_score() -> tuple:
     #### Returns:
     tuple: (Player Name, Highest individual score)
     '''
+    batsman_scores = deliveries.groupby(['match_id', 'inning', 'batter'])['batsman_runs'].sum().reset_index()
     highest_individual_score = batsman_scores.batsman_runs.max()
     highest_individual_score_batsman = batsman_scores[batsman_scores['batsman_runs'] == highest_individual_score]['batter'].values[0]
     return highest_individual_score_batsman, highest_individual_score
@@ -161,6 +161,7 @@ def get_most_50s() -> tuple:
     #### Returns:
     tuple: (Player Name, Number of 50+ scores)
     '''
+    batsman_scores = deliveries.groupby(['match_id', 'inning', 'batter'])['batsman_runs'].sum().reset_index()
     total50s = batsman_scores[(batsman_scores.batsman_runs >= 50) & (batsman_scores.batsman_runs <=99)]
     most50s = total50s['batter'].value_counts().idxmax()
     most50s_count = total50s['batter'].value_counts().max()
@@ -172,6 +173,7 @@ def get_most_100s() -> tuple:
     #### Returns:
     tuple: (Player Name, Number of 100+ scores)
     '''
+    batsman_scores = deliveries.groupby(['match_id', 'inning', 'batter'])['batsman_runs'].sum().reset_index()
     total100s = batsman_scores[(batsman_scores.batsman_runs >= 100)]
     most100s = total100s['batter'].value_counts().idxmax()
     most100s_count = total100s['batter'].value_counts().max()
