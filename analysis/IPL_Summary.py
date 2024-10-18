@@ -4,15 +4,12 @@
 # Description: Calculates the complete summary of IPL..
 #              These functions will be used by the IPL. Summary page to display these stats for the team 
 #              selected by the user.
-# Note: Not using functions in this page 
 # -------------------------------------------------------------------------------------------------------
 
 
 # Importing the required libraries
 import os
 import sys
-
-from attrs import define
 
 
 # importing read_data from utils to read the data from the parquet files
@@ -27,6 +24,10 @@ sys.path.append(os.path.join(current_dir))
 # reading data files using read_data module
 deliveries = read_data.deliveries_data()
 matches = read_data.matches_data()
+
+
+# batsman scores for each match and inning
+batsman_scores = deliveries.groupby(['match_id', 'inning', 'batter'])['batsman_runs'].sum().reset_index()
 
 
 #-------------------------------------------------------------------------------------#
@@ -108,7 +109,7 @@ def get_most_catches() -> tuple:
 def get_most_6s() -> tuple:
     '''
     #### Returns:
-    tuple: (Player with most, Number of 6s hit)
+    tuple: (Player with most 6s, Number of 6s hit)
     '''
     most6s_player = deliveries[deliveries.batsman_runs == 6]['batter'].value_counts().idxmax()
     most6s = deliveries[deliveries.batsman_runs == 6]['batter'].value_counts().max()
@@ -143,10 +144,6 @@ def get_highest_team_score() -> tuple:
     highest_team_score_team = matches[matches.target_runs == max(matches.target_runs)]['team1'].values[0]
     highest_team_score = max(matches.target_runs)
     return highest_team_score_team, highest_team_score
-
-
-# batsman scores for each match and inning
-batsman_scores = deliveries.groupby(['match_id', 'inning', 'batter'])['batsman_runs'].sum().reset_index()
 
 
 def get_highest_individual_score() -> tuple:
