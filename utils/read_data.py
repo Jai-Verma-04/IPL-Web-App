@@ -23,7 +23,7 @@ def matches_data():
     Dataframe: matches.parquet file as a dataframe.
     '''
     try:
-        matches = pd.read_parquet(r"data\\processed\\matches.parquet")
+        matches = pd.read_parquet("data/processed/matches.parquet")
     except Exception as e:
         return e
     
@@ -38,7 +38,7 @@ def deliveries_data():
     Dataframe: deliveries.parquet file as a dataframe.
     '''
 
-    deliveries = pd.read_parquet(r"data\\processed\\deliveries.parquet")
+    deliveries = pd.read_parquet("data/processed/deliveries.parquet")
 
     
     return deliveries

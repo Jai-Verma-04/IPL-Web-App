@@ -23,7 +23,7 @@ from utils import read_data
 deliveries = read_data.deliveries_data()
 matches = read_data.matches_data()
 
-print(deliveries)
+# print(deliveries)
 # batsman scores for each match and inning
 # batsman_scores = deliveries.groupby(['match_id', 'inning', 'batter'])['batsman_runs'].sum().reset_index()
 
