@@ -9,4 +9,4 @@ sys.path.append(os.path.join(current_dir))
 
 from analysis import IPL_Summary
 
-st.write(IPL_Summary.get_most_4s())
+st.write(IPL_Summary.get_most_6s())
