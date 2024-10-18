@@ -27,7 +27,7 @@ matches = read_data.matches_data()
 
 
 # batsman scores for each match and inning
-batsman_scores = deliveries.groupby(['match_id', 'inning', 'batter'])['batsman_runs'].sum().reset_index()
+# batsman_scores = deliveries.groupby(['match_id', 'inning', 'batter'])['batsman_runs'].sum().reset_index()
 
 
 #-------------------------------------------------------------------------------------#
