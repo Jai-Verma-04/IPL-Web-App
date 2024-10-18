@@ -101,8 +101,8 @@ def get_most_catches() -> tuple:
     #### Returns:
     tuple: (Player with most catches, number of catches)
     '''
-    most_catches_by = deliveries[deliveries.dismissal_kind == 'caught']['fielder'].value_counts().idxmax()
-    most_catches = deliveries[deliveries.dismissal_kind == 'caught']['fielder'].value_counts().max()
+    most_catches_by = deliveries[deliveries['dismissal_kind'] == 'caught']['fielder'].value_counts().idxmax()
+    most_catches = deliveries[deliveries['dismissal_kind'] == 'caught']['fielder'].value_counts().max()
     return most_catches_by, most_catches
 
 
