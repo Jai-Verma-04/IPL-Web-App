@@ -41,5 +41,4 @@ def deliveries_data():
     path = os.path.join('data', 'processed', 'deliveries.parquet')
     deliveries = pd.read_parquet(path=path)
 
-    
     return deliveries
