@@ -17,8 +17,8 @@ from utils import read_data
 
 
 # Setting the system path as current working directory
-current_dir = os.getcwd()
-sys.path.append(os.path.join(current_dir))
+# current_dir = os.getcwd()
+# sys.path.append(os.path.join(current_dir))
 
 
 # reading data files using read_data module
