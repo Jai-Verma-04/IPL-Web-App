@@ -22,8 +22,9 @@ def matches_data():
     Returns:
     Dataframe: matches.parquet file as a dataframe.
     '''
+    path = os.path.join('data', 'processed', 'matches.parquet')
     try:
-        matches = pd.read_parquet("data/processed/matches.parquet")
+        matches = pd.read_parquet(path=path)
     except Exception as e:
         return e
     
@@ -37,8 +38,8 @@ def deliveries_data():
     Returns:
     Dataframe: deliveries.parquet file as a dataframe.
     '''
-
-    deliveries = pd.read_parquet("data/processed/deliveries.parquet")
+    path = os.path.join('data', 'processed', 'deliveries.parquet')
+    deliveries = pd.read_parquet(path=path)
 
     
     return deliveries
