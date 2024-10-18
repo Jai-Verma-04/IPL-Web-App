@@ -43,5 +43,3 @@ def deliveries_data():
         return e
     
     return deliveries
-
-print(deliveries_data())
