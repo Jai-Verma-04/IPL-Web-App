@@ -21,8 +21,11 @@ def matches_data():
     Returns:
     Dataframe: matches.parquet file as a dataframe.
     '''
-
-    matches = pd.read_parquet("data\\processed\\matches.parquet")
+    try:
+        matches = pd.read_parquet("data\\processed\\matches.parquet")
+    except Exception as e:
+        return e
+    
     return matches
 
 
@@ -31,8 +34,11 @@ def deliveries_data():
     Reads the Deliveries data from deliveries.parquet file.
     
     Returns:
-    Dataframe: deliveries.parquet as a dataframe.
+    Dataframe: deliveries.parquet file as a dataframe.
     '''
-
-    deliveries = pd.read_parquet("data\\processed\\deliveries.parquet")
+    try:
+        deliveries = pd.read_parquet("data\\processed\\deliveries.parquet")
+    except Exception as e:
+        return e
+    
     return deliveries
