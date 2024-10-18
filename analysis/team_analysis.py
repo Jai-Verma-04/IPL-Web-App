@@ -19,12 +19,7 @@ sys.path.append(os.path.join(current_dir))
 
 
 # importing read_data from utils to read the data from the parquet files.
-from utils import read_data     
-
-
-# reading data files using read_data module
-deliveries = read_data.deliveries_data()
-matches = read_data.matches_data()
+from utils.read_data import matches, deliveries     
 
 
 #-------------------------------------------------------------------------------------#
