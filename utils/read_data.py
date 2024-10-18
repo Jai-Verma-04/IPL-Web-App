@@ -15,7 +15,6 @@ current_dir = os.getcwd()
 sys.path.append(os.path.join(current_dir))
 
 
-@functools.cache
 def matches_data():
     '''
     Reads the Matches data from matches.parquet file.
@@ -31,7 +30,6 @@ def matches_data():
     return matches
 
 
-@functools.cache
 def deliveries_data():
     '''
     Reads the Deliveries data from deliveries.parquet file.
@@ -45,3 +43,5 @@ def deliveries_data():
         return e
     
     return deliveries
+
+print(deliveries_data())
