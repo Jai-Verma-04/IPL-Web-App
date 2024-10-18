@@ -38,7 +38,7 @@ def deliveries_data():
     Dataframe: deliveries.parquet file as a dataframe.
     '''
 
-    deliveries = pd.read_parquet("data\\processed\\deliveries.parquet")
+    deliveries = pd.read_parquet("..\\data\\processed\\deliveries.parquet")
 
     
     return deliveries
