@@ -21,3 +21,5 @@ st.write(f"powerplay runs: {player_analysis.runs_scored_in_powerplay(player_name
 st.write(f"death over runs: {player_analysis.runs_scored_in_death_overs(player_name=player_name)}")
 st.write(f"Most Successful Batting Venue: {player_analysis.most_successful_venue(player_name=player_name)[0]}")
 st.write(f"Most Successful Bowling Venue: {player_analysis.most_successful_venue(player_name=player_name)[1]}")
+
+# print(constants.PLAYERS)
