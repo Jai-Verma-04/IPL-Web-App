@@ -10,9 +10,9 @@ current_dir = os.getcwd()
 sys.path.append(os.path.join(current_dir))
 
 from analysis import player_analysis
-from utils import CONSTANTS
+from utils.constants import PLAYERS
 
-player_name = st.selectbox("Choose a player (start typing the last name)", options = CONSTANTS.PLAYERS, index=None)
+player_name = st.selectbox("Choose a player (start typing the last name)", options = PLAYERS, index=None)
 
 
 st.write(f"Batting Average: {player_analysis.batting_average(player_name=player_name)}")
