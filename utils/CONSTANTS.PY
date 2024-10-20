@@ -4,6 +4,11 @@
 # Description: A file for storing variables / data that is repeatedly used throughout the project.
 # -------------------------------------------------------------------------------------------------------
 
+import os
+import sys
+
+current_dir = os.getcwd()
+sys.path.append(os.path.join(current_dir))
 
 TEAMS = ['Royal Challengers Bangalore', 'Kings XI Punjab', 'Delhi Capitals',
        'Mumbai Indians', 'Kolkata Knight Riders', 'Rajasthan Royals',
