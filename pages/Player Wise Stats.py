@@ -10,9 +10,8 @@ current_dir = os.getcwd()
 sys.path.append(os.path.join(current_dir))
 
 from analysis import player_analysis
-# from utils import constants
+from utils.constants import PLAYERS
 
-PLAYERS = ['A Ashish Reddy', 'A Badoni', 'A Chandila', 'A Chopra']
 player_name = st.selectbox("Choose a player (start typing the last name)", options = PLAYERS, index=None)
 
 
