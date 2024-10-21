@@ -6,8 +6,8 @@ import os
 import sys
 
 
-current_dir = os.getcwd()
-sys.path.append(os.path.join(current_dir))
+# current_dir = os.getcwd()
+# sys.path.append(os.path.join(current_dir))
 
 from analysis import player_analysis
 from utils.data import PLAYERS

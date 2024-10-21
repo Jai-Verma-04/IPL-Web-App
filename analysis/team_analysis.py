@@ -14,8 +14,8 @@ import pandas as pd
 
 
 # Setting the current working directory as system path
-current_dir = os.getcwd()
-sys.path.append(os.path.join(current_dir))
+# current_dir = os.getcwd()
+# sys.path.append(os.path.join(current_dir))
 
 
 # importing read_data from utils to read the data from the parquet files.

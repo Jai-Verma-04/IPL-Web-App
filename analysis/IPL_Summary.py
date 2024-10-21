@@ -12,8 +12,8 @@ import os
 import sys
 
 # Setting the system path as current working directory
-current_dir = os.getcwd()
-sys.path.append(os.path.join(current_dir))
+# current_dir = os.getcwd()
+# sys.path.append(os.path.join(current_dir))
 
 # importing read_data from utils to read the data from the parquet files
 from utils.read_data import matches, deliveries
