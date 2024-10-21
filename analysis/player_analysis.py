@@ -8,6 +8,7 @@
 
 
 # Importing the required libraries
+from re import S
 import pandas as pd
 
 # importing read_data from utils to read the data from the parquet files.
@@ -25,7 +26,7 @@ batsman_scores = deliveries.groupby(['match_id', 'inning', 'over', 'batter'])['b
 # This would mean that the players page would look the same for both bowlers and batters.
 # The bowling and batting both stats have to be displayed for each of them.
 
-def total_matches_played(player_name):
+def total_matches_played(player_name: str) -> int:
     # An obvious shortcoming of this function is if the player has not contributed in any fielding, bowling, batting, or on non-striker
     # then the code will not be able to find the players name anywhere
     # A fix for this could have been the playing XI players list but it is not available in this dataset.
@@ -45,7 +46,7 @@ def total_matches_played(player_name):
         ]['match_id'].nunique()
 
 
-def runs_scored(player_name):
+def runs_scored(player_name: str) -> int:
     '''
     The function takes player name as input and returns the total runs scored by them.
 
@@ -58,7 +59,7 @@ def runs_scored(player_name):
     return deliveries.loc[deliveries.batter == player_name, 'batsman_runs'].sum()
 
 
-def wickets_taken(player_name):
+def wickets_taken(player_name: str) -> int:
     '''
     The function takes player name as input and returns the total number of wickets taken by them.
 
@@ -71,7 +72,7 @@ def wickets_taken(player_name):
     return deliveries.loc[deliveries.bowler == player_name,'is_wicket'].sum()
 
 
-def highest_individual_score(player_name):
+def highest_individual_score(player_name: str) -> int:
     '''
     The function takes player name as input and returns their highest individual score.
 
@@ -84,7 +85,7 @@ def highest_individual_score(player_name):
     return batsman_scores.loc[batsman_scores.batter == player_name, 'batsman_runs'].max()
 
 
-def total_50s(player_name):
+def total_50s(player_name: str) -> int:
     '''
     The function takes player name as input and returns the total number of 50s scored by them.
 
@@ -101,7 +102,7 @@ def total_50s(player_name):
          'batsman_runs'].count()
 
 
-def total_100s(player_name):
+def total_100s(player_name: str) -> int:
     '''
     The function takes player name as input and returns the total number of 100s scored by them.
 
@@ -117,7 +118,7 @@ def total_100s(player_name):
          'batsman_runs'].count()
 
 
-def potm_awards(player_name):
+def potm_awards(player_name: str) -> int:
     '''
     The function takes player name as input and returns the total number of POTM awarded to them.
 
@@ -130,7 +131,7 @@ def potm_awards(player_name):
     return matches.loc[matches.player_of_match == player_name]['player_of_match'].count()
 
 
-def total_4s_hit(player_name):
+def total_4s_hit(player_name: str) -> int:
     '''
     The function takes player name as input and returns the total number of 4s hit by the player.
 
@@ -143,7 +144,7 @@ def total_4s_hit(player_name):
     return deliveries[(deliveries.batter == player_name) & (deliveries.batsman_runs == 4)].shape[0]
 
 
-def total_6s_hit(player_name):
+def total_6s_hit(player_name: str) -> int:
     '''
     The function takes player name as input and returns the total number 6s hit by the player.
 
@@ -156,7 +157,7 @@ def total_6s_hit(player_name):
     return deliveries[(deliveries.batter == player_name) & (deliveries.batsman_runs == 6)].shape[0]
 
 
-def batting_average(player_name):   
+def batting_average(player_name: str) -> float:   
     # Formula: total runs scored / total dismissals
 
     '''
@@ -175,13 +176,13 @@ def batting_average(player_name):
         return runs_scored(player_name)
 
 
-def runs_conceded(player_name):
+def runs_conceded(player_name: str) -> int:
     # helping function only for the next few functions.
     # to return the total runs conceded by the bowler.
     return deliveries[(deliveries.bowler == player_name)]['total_runs'].sum()
 
 
-def bowling_average(player_name):   
+def bowling_average(player_name: str) -> float:   
     # Formula: total runs conceded / total wickets taken
     '''
     ### Average runs conceded to take a wicket.
@@ -199,7 +200,7 @@ def bowling_average(player_name):
     except ZeroDivisionError:
         return runs_conceded(player_name)
 
-def strike_rate(player_name):   
+def strike_rate(player_name: str) -> float:   
     # Formula: (total runs scored / total balls faced) * 100
     '''
     ### Average number of runs a batter scores per 100 balls faced.
@@ -214,7 +215,7 @@ def strike_rate(player_name):
     return round((runs_scored(player_name)/deliveries[deliveries.batter == player_name].shape[0])*100, 2)
 
 
-def runs_scored_in_powerplay(player_name):
+def runs_scored_in_powerplay(player_name: str) -> int:
     '''
     ### This demonstrates their hitting ability in the starting overs.
     The function takes player name as input and returns the total runs scored by them in the powerplay.
@@ -229,7 +230,7 @@ def runs_scored_in_powerplay(player_name):
     return batsman_scores[(batsman_scores.batter == player_name) & (batsman_scores.over <6)]['batsman_runs'].sum()
 
 
-def runs_scored_in_death_overs(player_name):
+def runs_scored_in_death_overs(player_name: str) -> int:
     '''
     ### This demonstrates their match finishing abilities.
     The function takes player name as input and returns the total runs scored by them in the death overs.
@@ -243,7 +244,7 @@ def runs_scored_in_death_overs(player_name):
     return batsman_scores[(batsman_scores.batter == player_name) & (batsman_scores.over >=16)]['batsman_runs'].sum()
 
 
-def favorite_teams_to_score(player_name):
+def favorite_teams_to_score(player_name: str) -> pd.DataFrame:
     '''
     The function takes player name as input and returns the top 3 teams against which they have scored the most.
     #### Parameter: 
@@ -258,7 +259,7 @@ def favorite_teams_to_score(player_name):
     return favorites
 
 
-def favorite_team_for_bowlers(player_name):
+def favorite_team_for_bowlers(player_name: str) -> pd.DataFrame:
     '''
     The function takes player name as input and returns the top 3 teams against which they have taken the most wickets.
     #### Parameter: 
@@ -273,7 +274,7 @@ def favorite_team_for_bowlers(player_name):
     return favorites
 
 
-def most_successful_venue(player_name):
+def most_successful_venue(player_name: str) -> tuple:
     '''
     The function takes player name as input and returns the venue in which they are the most successful.
     #### Parameter: 
