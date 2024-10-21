@@ -1,16 +1,9 @@
 import streamlit as st
+from analysis import player_analysis
+from utils.data import PLAYERS
 
 st.set_page_config(page_title="Player Wise Stats", page_icon="🤵", initial_sidebar_state="collapsed")
 
-import os
-import sys
-
-
-# current_dir = os.getcwd()
-# sys.path.append(os.path.join(current_dir))
-
-from analysis import player_analysis
-from utils.data import PLAYERS
 
 player_name = st.selectbox("Choose a player (start typing the last name)", options = PLAYERS, index=None)
 

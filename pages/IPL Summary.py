@@ -10,5 +10,3 @@ import streamlit as st
 from analysis import IPL_Summary
 
 st.write(IPL_Summary.get_most_catches())
-
-print(current_dir)
