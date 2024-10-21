@@ -1,5 +1,5 @@
 # -------------------------------------------------------------------------------------------------------
-# File Name: CONSTANTS.py
+# File Name: data.py
 # Author:   Jai Verma
 # Description: A file for storing variables / data that is repeatedly used throughout the project.
 # -------------------------------------------------------------------------------------------------------
