@@ -6,9 +6,9 @@ import streamlit as st
 current_dir = os.getcwd()
 sys.path.append(os.path.join(current_dir))
 
-import utils.constants as c
+from ..utils.constants import TEAMS
 
-team = st.selectbox("Choose a team", c.TEAMS)
+team = st.selectbox("Choose a team", TEAMS)
 
 st.write("here is the graph")
 
