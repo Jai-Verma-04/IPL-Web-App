@@ -1,8 +1,8 @@
 # -------------------------------------------------------------------------------------------------------
-# File Name: IPL._Summary.py
+# File Name: IPL_Summary.py
 # Author: Jai Verma
-# Description: Calculates the complete summary of IPL..
-#              These functions will be used by the IPL. Summary page to display these stats for the team 
+# Description: Calculates the complete summary of IPL.
+#              These functions will be used by the IPL Summary page to display these stats for the team 
 #              selected by the user.
 # -------------------------------------------------------------------------------------------------------
 
