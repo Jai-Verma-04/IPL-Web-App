@@ -7,4 +7,4 @@ team = st.selectbox("Choose a team", TEAMS)
 logo_path = os.path.join('static/team_logos', f"{team}.png")
 
 
-st.image(logo_path)
+st.image(f"./static/team_logos/{team}.png")
