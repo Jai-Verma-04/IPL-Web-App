@@ -13,7 +13,12 @@ import pandas as pd
 from utils.read_data import matches, deliveries
 
 
-deliveries_with_season = pd.merge(deliveries, matches[['id', 'season']], left_on='match_id', right_on='id', how='left')
+deliveries_with_season = pd.merge(
+                            deliveries, matches[['id', 'season']], 
+                            left_on='match_id', 
+                            right_on='id', 
+                            how='left'
+                            )
 
 #-------------------------------------------------------------------------------------#
 #                             |  FUNCTIONS    |                                       #
@@ -21,10 +26,28 @@ deliveries_with_season = pd.merge(deliveries, matches[['id', 'season']], left_on
 
 
 def total_matches_played(season: int) -> int:
+    '''
+    The function takes season as input and returns the total number of matches played in that season.
+    
+    #### Parameter: 
+    season
+
+    #### Returns: 
+    Total number of matches played in the selected season.
+    '''
     return matches.season.value_counts().sort_index(ascending=False).loc[season]
 
 
 def total_runs_scored(season: int) -> int:
+    '''
+    The function takes season as input and returns the total runs scored in that season.
+    
+    #### Parameter: 
+    season
+
+    #### Returns: 
+    Total runs scored in the selected season.
+    '''
     matches['team2_runs'] = matches.target_runs - matches.result_margin
     matches['total_runs'] = matches.target_runs + matches.team2_runs
     
@@ -33,47 +56,161 @@ def total_runs_scored(season: int) -> int:
 
 # Also the orange cap winner
 def highest_run_scorer(season: int) -> tuple:
-    return deliveries_with_season[['batter','batsman_runs', 'season']].groupby(['season', 'batter']).agg('sum').loc[season].idxmax().values[0], \
-    deliveries_with_season[['batter','batsman_runs', 'season']].groupby(['season', 'batter']).agg('sum').loc[season].max().values[0],
+    '''
+    The function takes season as input and returns the highest run scorer in that season.
+    
+    #### Parameter: 
+    season
+
+    #### Returns: 
+    tuple: (player name, runs)
+    Highest run scorer in the selected season
+    '''
+    player = deliveries_with_season[
+                    ['batter','batsman_runs', 'season']
+                ].groupby(
+                        ['season', 'batter']
+                    ).agg('sum').loc[season].idxmax().values[0]
+    
+    runs = deliveries_with_season[
+                    ['batter','batsman_runs', 'season']
+                ].groupby(
+                        ['season', 'batter']
+                    ).agg('sum').loc[season].max().values[0]
+
+    return player, runs
 
 
 # Also the Purple cap winner
 def highest_wicket_taker(season: int) -> tuple:
-    return deliveries_with_season[deliveries_with_season['is_wicket'] == 1][['is_wicket', 'bowler', 'season']].groupby(['season', 'bowler']).agg('count').loc[season].idxmax().values[0], \
-    deliveries_with_season[deliveries_with_season['is_wicket'] == 1][['is_wicket', 'bowler', 'season']].groupby(['season', 'bowler']).agg('count').loc[season].max().values[0]
+    '''
+    The function takes season as input and returns the highest wicket taker in that season.
+    
+    #### Parameter: 
+    season
+
+    #### Returns: 
+    tuple: (player name, wickets)
+    Highest wickets taker in the selected season
+    '''
+    player = deliveries_with_season[
+                    deliveries_with_season['is_wicket'] == 1
+                ][
+                    ['is_wicket', 'bowler', 'season']
+                ].groupby(
+                        ['season', 'bowler']
+                    ).agg('count').loc[season].idxmax().values[0]
+
+    wickets = deliveries_with_season[
+                    deliveries_with_season['is_wicket'] == 1
+                ][
+                    ['is_wicket', 'bowler', 'season']
+                ].groupby(
+                        ['season', 'bowler']
+                    ).agg('count').loc[season].max().values[0]
+
+    return player, wickets
 
 
 def total_6s(season: int) -> int:
-    return deliveries_with_season[(deliveries_with_season.batsman_runs == 6) & (deliveries_with_season.season == season)].shape[0]
+    '''
+    The function takes season as input and returns the total number of 6s hit in that season.
+    
+    #### Parameter: 
+    season
+
+    #### Returns: 
+    Total number of 6s hit in the selected season.
+    '''
+    return deliveries_with_season[
+                (deliveries_with_season.batsman_runs == 6) & (deliveries_with_season.season == season)
+            ].shape[0]
 
 
 def total_4s(season: int) -> int:
-    deliveries_with_season[(deliveries_with_season.batsman_runs == 4) & (deliveries_with_season.season == season)].shape[0]
+    '''
+    The function takes season as input and returns the total number of 4s hit in that season.
+    
+    #### Parameter: 
+    season
+
+    #### Returns: 
+    Total number of 4s hit in the selected season.
+    '''
+    return deliveries_with_season[
+                (deliveries_with_season.batsman_runs == 4) & (deliveries_with_season.season == season)
+            ].shape[0]
 
 
 def most_wins_in_league_matches(season: int) -> tuple:
-    return matches[(matches.season == season) & (matches.match_type == 'League')]['winner'].value_counts().idxmax(),\
-    matches[(matches.season == season) & (matches.match_type == 'League')]['winner'].value_counts().max()
+    '''
+    The function takes season as input and returns the team that has the highest number of league match wins in that season.
+    
+    #### Parameter: 
+    season
+
+    #### Returns: 
+    tuple: (Team name, Wins)
+    Team with the highest league match wins in the selected season
+    '''
+    team = matches[
+                (matches.season == season) & (matches.match_type == 'League')
+            ]['winner'].value_counts().idxmax()
+    
+    wins = matches[
+                (matches.season == season) & (matches.match_type == 'League')
+            ]['winner'].value_counts().max()
+    
+    return team, wins
 
 
-def final_match(season: int):
-    match = matches[(matches.match_type == 'Final') & (matches.season == season)][['team1', 'team2', 'winner']].reset_index(drop=True)
+def final_match(season: int) -> pd.DataFrame:
+    '''
+    Helper function takes season as input and returns the final match of the season.
+    
+    #### Parameter: 
+    season
+
+    #### Returns: 
+    Final match of the season
+    '''
+    match = matches[
+                (matches.match_type == 'Final') & (matches.season == season)
+            ][
+                ['team1', 'team2', 'winner']
+            ].reset_index(drop=True)
+    
     return match
 
+
 def winner(season: int) -> str:
+    '''
+    The function takes season as input and returns the team that won the selected season.
+    
+    #### Parameter: 
+    season
+
+    #### Returns: 
+    Winner of the selected season
+    '''
     match = final_match(season)
 
     return match.winner.iloc[0]
 
 
 def runner_up(season: int) -> str:
+    '''
+    The function takes season as input and returns the team that was runners up selected season.
+    
+    #### Parameter: 
+    season
+
+    #### Returns: 
+    Runners up of the selected season
+    '''
     match = final_match(season)
 
-    runner_up = ''
-
     if match.team1.iloc[0] == winner(season):
-        runner_up = match.team2.iloc[0]
-    else:
-        runner_up = match.team1.iloc[0]
-
-    return runner_up
+        return match.team2.iloc[0]
+    
+    return match.team1.iloc[0]
