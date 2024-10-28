@@ -7,7 +7,4 @@ venues = data.STADIUMS
 
 selected = st.selectbox("Choose a venue ", options=venues)
 
-st.write(average_first_innings_score(selected))
-st.dataframe(win_percentage(selected), use_container_width=True, hide_index=True)
-st.write(most_wickets(selected))
-st.write(toss_decision  (selected))
+st.image(f"static\\stadiums\\{selected}.png")
