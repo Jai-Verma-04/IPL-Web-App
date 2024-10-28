@@ -15,4 +15,4 @@ player_name = st.selectbox("Choose a player (start typing the last name)", optio
 # st.write(f"Most Successful Batting Venue: {player_analysis.most_successful_venue(player_name=player_name)[0]}")
 # st.write(f"Most Successful Bowling Venue: {player_analysis.most_successful_venue(player_name=player_name)[1]}")
 
-st.image(f"static\\players\\{player_name}.png")
+st.image(f"./static/team_logos/{player_name}.png")
