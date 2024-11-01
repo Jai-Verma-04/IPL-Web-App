@@ -3,41 +3,14 @@
 # Author:   Jai Verma
 # Description: A file for storing variables / data that is repeatedly used throughout the project.
 # -------------------------------------------------------------------------------------------------------
+from utils.read_data import matches
 
-SEASONS = [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018,
-            2019, 2020, 2021, 2022, 2023, 2024]
+SEASONS = matches['season'].unique()
 
 
-TEAMS = ['Royal Challengers Bangalore', 'Punjab Kings', 'Delhi Capitals',
-       'Mumbai Indians', 'Kolkata Knight Riders', 'Rajasthan Royals',
-       'Deccan Chargers', 'Chennai Super Kings', 'Kochi Tuskers Kerala',
-       'Pune Warriors', 'Sunrisers Hyderabad', 'Gujarat Lions',
-       'Rising Pune Supergiants', 'Lucknow Super Giants',
-       'Gujarat Titans']
+TEAMS = matches['team1'].unique()
 
-STADIUMS = ['M Chinnaswamy Stadium', 'Punjab Cricket Association Stadium',
-       'Feroz Shah Kotla', 'Wankhede Stadium', 'Eden Gardens',
-       'Sawai Mansingh Stadium', 'Rajiv Gandhi International Stadium',
-       'MA Chidambaram Stadium', 'Dr DY Patil Sports Academy', 'Newlands',
-       "St George's Park", 'Kingsmead', 'SuperSport Park', 'Buffalo Park',
-       'New Wanderers Stadium', 'De Beers Diamond Oval',
-       'OUTsurance Oval', 'Brabourne Stadium',
-       'Sardar Patel Stadium, Motera', 'Barabati Stadium',
-       'Vidarbha Cricket Association Stadium, Jamtha',
-       'Himachal Pradesh Cricket Association Stadium', 'Nehru Stadium',
-       'Holkar Cricket Stadium',
-       'Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium',
-       'Subrata Roy Sahara Stadium',
-       'Maharashtra Cricket Association Stadium',
-       'Shaheed Veer Narayan Singh International Stadium',
-       'JSCA International Stadium Complex', 'Sheikh Zayed Stadium',
-       'Sharjah Cricket Stadium', 'Dubai International Cricket Stadium',
-       'Saurashtra Cricket Association Stadium', 'Green Park',
-       'Arun Jaitley Stadium', 'Narendra Modi Stadium, Ahmedabad',
-       'Zayed Cricket Stadium, Abu Dhabi',
-       'Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow',
-       'Barsapara Cricket Stadium, Guwahati',
-       'Maharaja Yadavindra Singh International Cricket Stadium, Mullanpur']
+STADIUMS = matches['venue'].unique()
 
 PLAYERS = ['A Ashish Reddy', 'A Badoni', 'A Chandila', 'A Chopra',
        'A Choudhary', 'A Dananjaya', 'A Flintoff', 'A Kamboj', 'A Kumble',
