@@ -73,8 +73,8 @@ def wickets_taken(player_name: str) -> int:
     Total Number of wickets taken by the selected player.
     '''
     return deliveries.loc[
-            deliveries.bowler == player_name,'is_wicket'
-            ].sum()
+            (deliveries.bowler == player_name) & (deliveries.is_wicket == 1) & (deliveries.dismissal_kind != 'run out'), 
+            'is_wicket'].sum()
 
 
 def highest_individual_score(player_name: str) -> int:
