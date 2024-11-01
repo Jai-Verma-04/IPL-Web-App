@@ -1,18 +1,16 @@
-from re import Match
 import streamlit as st
-
 
 from utils.data import SEASONS, TEAMS
 
 from analysis.scorecard_analysis import *
 
 
-team_1 = st.selectbox('Choose a team: ', TEAMS, key = 'team_1')
-team_2 = st.selectbox('Choose a team: ', TEAMS, key = 'team_2')
+team_1 = st.selectbox('Choose a team: ', TEAMS, key = 'team_1', index=0)
+team_2 = st.selectbox('Choose a team: ', [team for team in TEAMS if team!=team_1], key = 'team_2', index=0)
 season = st.selectbox('Choose a season', SEASONS)
 
 matches_list = display_matches(team_1, team_2, season)
-st.write(matches_list)
+st.table(matches_list)
 
 match_id = st.selectbox("Choose Match ID: ", matches_list['id'])
 
@@ -23,23 +21,45 @@ st.write(a.match_name)
 st.write(a.match_date)
 st.write(f"{a.toss[0]} won the toss and opt to {a.toss[1]}")
 st.write(f"{a.umpires[0]} and {a.umpires[1]}")
-st.write(f"{a.venue[0]}, {a.venue[1]}")
-
-expand = st.expander("My label", icon=":material/info:")
-
-with expand:
-    st.radio("Select one:", [1, 2])
-
+st.write(f"{a.venue[0].split(',')[0].strip()}, {a.venue[1]}")
+st.write(a.result)
+st.write(a.potm)
 
 inning_1, inning_2 = st.tabs(["First Innings", "Second Innings"])
 
-b=ScoreCard(match_id)
 
 with inning_1:
     inning = 1
-    st.write(b.bowling_card(inning))
+    
+    batting, bowling = st.tabs(['batting', 'bowling'])
+    
+    with batting:
+        score=ScoreCard(match_id, inning=inning)
+    
+        st.write(score.scorecard_data)
+        st.write(score.key_batter)
+        st.write(score.batting_summary)
+    
+    with bowling:
+        st.write(score.bowler_data)
+        st.write(score.key_bowler)
+        st.write(score.fall_of_wickets)
+
 
 with inning_2:
     inning = 2
-    st.write(b.batting_card(inning))
+    
+    batting, bowling = st.tabs(['batting', 'bowling'])
+    
+    with batting:
+        score=ScoreCard(match_id, inning=inning)
+    
+        st.write(score.scorecard_data)
+        st.write(score.key_batter)
+        st.write(score.batting_summary)
 
+    with bowling:
+        st.write(score.bowler_data)
+        st.write(score.key_bowler)
+        st.write(score.fall_of_wickets)
+    

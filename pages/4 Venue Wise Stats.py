@@ -7,4 +7,4 @@ venues = data.STADIUMS
 
 selected = st.selectbox("Choose a venue ", options=venues)
 
-st.image(f"static\\stadiums\\{selected}.png")
+st.image(f"./static/stadiums/{selected}.png")

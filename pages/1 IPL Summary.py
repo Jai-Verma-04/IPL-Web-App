@@ -1,8 +1,7 @@
 import streamlit as st
 from analysis.IPL_Summary import *
-import os
-# current_dir = os.getcwd()
-# sys.path.append(os.path.join(current_dir))
+
+a = Summary()
 
 st.set_page_config(
     page_title = "Summary",
@@ -26,7 +25,7 @@ with headercol:
             st.markdown(
             f"""
                 <h2 style ='text-align: center;'> Total Seasons </h2>
-                <h3 style='text-align: center;'>{get_total_seasons()}</h3>
+                <h3 style='text-align: center;'>{a.get_total_seasons}</h3>
             """,
             unsafe_allow_html=True
             )
@@ -36,7 +35,7 @@ with headercol:
             st.header("Total runs made")
             st.markdown(
             f"""
-                <h3 style='text-align: center;'>{get_total_runs():,}</h3>
+                <h3 style='text-align: center;'>{a.get_total_runs:,}</h3>
             """,
             unsafe_allow_html=True
             )
@@ -45,7 +44,7 @@ with headercol:
             st.header("Total Wickets")
             st.markdown(
             f"""
-                <h3 style='text-align: center;'>{get_total_wickets():,}</h3>
+                <h3 style='text-align: center;'>{a.get_total_wickets:,}</h3>
             """,
             unsafe_allow_html=True
             )
@@ -55,17 +54,17 @@ col1, col2, col3, col4 = st.columns(spec=[1,1,1,1], gap='medium', vertical_align
 with col1:
     with st.container(border=True, height=175):
         st.header(f"Total ball bowled:", anchor=False)
-        st.text(f"{get_total_balls():,}")
+        st.text(f"{a.get_total_balls:,}")
 
     with st.container(border=True, height=175):
         st.header(f"Total boundaries:", anchor=False)
-        st.text(f"{get_total_boundaries():,}")
+        st.text(f"{a.get_total_boundaries:,}")
 
     with st.container(border=True, height=175):
         st.header(f"Highest Team Score:", anchor=False)
-        st.text(f"{get_highest_team_score()[0]}")
-        st.text(f"{get_highest_team_score()[1]:.0f}")
-        st.image(f"static/team_logos/{get_highest_team_score()[0]}.png")
+        st.text(f"{a.get_highest_team_score[0]}")
+        st.text(f"{a.get_highest_team_score[1]:.0f}")
+        st.image(f"static/team_logos/{a.get_highest_team_score[0]}.png")
 
 with col2:
     with st.container(border=True):
@@ -75,49 +74,49 @@ with col2:
             st.image('static/icons/ipl logo.png', width = 75)
         
         with c2:
-            st.markdown(f"**Name:** {get_most_runs()[0]}")
-            st.markdown(f"**Runs:** {get_most_runs()[1]}")
+            st.markdown(f"**Name:** {a.get_most_runs[0]}")
+            st.markdown(f"**Runs:** {a.get_most_runs[1]}")
 
     with st.container(border=True, height=175):
         st.header(f"Most 6s:", anchor=False)
-        st.text(f"{get_most_6s()[0]}")
-        st.text(f"{get_most_6s()[1]}")
+        st.text(f"{a.get_most_6s[0]}")
+        st.text(f"{a.get_most_6s[1]}")
 
     with st.container(border=True, height=175):
         st.header(f"Highest individual score:", anchor=False)
-        st.text(f"Player: {get_highest_individual_score()[0]}")
-        st.text(f"Runs: {get_highest_individual_score()[1]}")
+        st.text(f"Player: {a.get_highest_individual_score[0]}")
+        st.text(f"Runs: {a.get_highest_individual_score[1]}")
 
 
 with col3:
     with st.container(border=True, height=175):
         st.header(f"Most Wickets:", anchor=False)
-        st.text(f"{get_most_wickets()[0]}")
-        st.text(f"{get_most_wickets()[1]}")
+        st.text(f"{a.get_most_wickets[0]}")
+        st.text(f"{a.get_most_wickets[1]}")
 
     with st.container(border=True, height=175):
         st.header(f"Most 4s:", anchor=False)
-        st.text(f"{get_most_4s()[0]}")
-        st.text(f"{get_most_4s()[1]}")
+        st.text(f"{a.get_most_4s[0]}")
+        st.text(f"{a.get_most_4s[1]}")
     
     with st.container(border=True, height=175):
         st.header(f"Most 50s:", anchor=False)
-        st.text(f"{get_most_50s()[0]}")
-        st.text(f"{get_most_50s()[1]}")
+        st.text(f"{a.get_most_50s[0]}")
+        st.text(f"{a.get_most_50s[1]}")
     
 
 with col4:
     with st.container(border=True, height=175):
         st.header(f"Most catches:", anchor=False)
-        st.text(f"{get_most_catches()[0]}")
-        st.text(f"{get_most_catches()[1]}")
+        st.text(f"{a.get_most_catches[0]}")
+        st.text(f"{a.get_most_catches[1]}")
 
     with st.container(border=True, height = 175):
         st.header(f"Most POTM: ", anchor=False)
-        st.text(f"{get_most_potm()[0]}")
-        st.text(f"{get_most_potm()[1]}")
+        st.text(f"{a.get_most_potm[0]}")
+        st.text(f"{a.get_most_potm[1]}")
 
     with st.container(border=True, height=175):
         st.header(f"Most 100s:", anchor=False)
-        st.text(f"{get_most_100s()[0]}")
-        st.text(f"{get_most_100s()[1]}")
+        st.text(f"{a.get_most_100s[0]}")
+        st.text(f"{a.get_most_100s[1]}")
