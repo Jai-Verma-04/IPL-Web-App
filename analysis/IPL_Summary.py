@@ -24,6 +24,7 @@ class Summary:
     def __init__(self):
         pass
     
+
     @property
     def get_total_runs(self) -> int:
         '''
@@ -31,7 +32,8 @@ class Summary:
         Total runs scored.
         '''
         return deliveries.total_runs.sum()
-        
+
+
     @property
     def get_total_balls(self) -> int:
         '''
@@ -39,6 +41,7 @@ class Summary:
         Total balls bowled.
         '''
         return deliveries.shape[0]
+
 
     @property
     def get_total_wickets(self) -> int:
@@ -48,6 +51,7 @@ class Summary:
         '''
         return deliveries.is_wicket.value_counts()[1]
 
+    
     @property
     def get_total_seasons(self) -> int:
         '''
@@ -56,6 +60,7 @@ class Summary:
         '''
         return len(matches.season.unique())
 
+    
     @property
     def get_total_boundaries(self) -> int:
         '''
@@ -66,6 +71,7 @@ class Summary:
                 (deliveries.batsman_runs == 4) | (deliveries.batsman_runs == 6)
                 ]['batter'].count()
 
+    
     @property
     def get_most_wickets(self) -> tuple:
         '''
@@ -78,8 +84,8 @@ class Summary:
         
         most_wickets = deliveries[deliveries.is_wicket & (deliveries.dismissal_kind != 'run out')].groupby(['bowler', 'dismissal_kind']).size().get('YS Chahal', 0).sum()
 
-        
         return most_wickets_player, most_wickets
+
 
     @property
     def get_most_runs(self) -> tuple:
@@ -94,6 +100,7 @@ class Summary:
         most_runs = bat_runs.max()
 
         return most_runs_player, most_runs
+
 
     @property
     def get_most_catches(self) -> tuple:
@@ -111,6 +118,7 @@ class Summary:
 
         return most_catches_by, most_catches
 
+
     @property
     def get_most_6s(self) -> tuple:
         '''
@@ -126,6 +134,7 @@ class Summary:
                     ]['batter'].value_counts().max()
         
         return most6s_player, most6s
+
 
     @property
     def get_most_4s(self) -> tuple:
@@ -143,6 +152,7 @@ class Summary:
         
         return most4s_player, most4s
 
+
     @property
     def get_most_potm(self) -> tuple:
         '''
@@ -154,6 +164,7 @@ class Summary:
         most_potm_times = matches['player_of_match'].value_counts().max()
         
         return most_potm, most_potm_times
+
 
     @property
     def get_highest_team_score(self) -> tuple:
@@ -169,6 +180,7 @@ class Summary:
 
         return highest_team_score_team, highest_team_score
 
+
     @property
     def get_highest_individual_score(self) -> tuple:
         '''
@@ -182,6 +194,7 @@ class Summary:
                                             ]['batter'].values[0]
         
         return highest_individual_score_batsman, highest_individual_score
+
 
     @property
     def get_most_50s(self) -> tuple:
@@ -198,6 +211,7 @@ class Summary:
         most50s_count = total50s['batter'].value_counts().max()
         
         return most50s, most50s_count
+
 
     @property
     def get_most_100s(self) -> tuple:
