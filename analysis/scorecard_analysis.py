@@ -457,16 +457,12 @@ class ScoreCard:
         Returns a dataframe with the columns as wicket number and the score at which the wicket was taken
         '''
         # Calculate cumulative runs at each ball
-        cumulative_runs = self.inning_df['total_runs'].cumsum().reset_index(drop=True)
-        wickets_column = self.inning_df.loc[:, 'is_wicket'].reset_index(drop=True)
+        cumulative_runs = self.inning_df['total_runs'].cumsum()
 
-        df = pd.concat([cumulative_runs, wickets_column], axis=1)
-        wickets = df[df['is_wicket'] == 1]
-
-        # Creates a dataframe with columns 'Wickets' and 'Runs'
+        # Create a Fall of wickets dataframe that will display the FOW Table.
         fow = pd.DataFrame({
-        'wicket': range(1, len(wickets) + 1),
-        'runs': wickets['total_runs'].reset_index(drop=True)
+            'wicket': range(1, self.inning_df['is_wicket'].sum() + 1),
+            'runs': cumulative_runs[self.inning_df['is_wicket'] == 1].values
         })
-        
+
         return fow
