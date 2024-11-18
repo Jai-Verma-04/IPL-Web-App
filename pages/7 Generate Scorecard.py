@@ -10,7 +10,12 @@ team_2 = st.selectbox('Choose a team: ', [team for team in TEAMS if team!=team_1
 season = st.selectbox('Choose a season', SEASONS)
 
 matches_list = display_matches(team_1, team_2, season)
-st.table(matches_list)
+
+if len(matches_list)==0:
+    st.write("No matches available for the selected combination")
+    st.stop()
+else:
+    st.table(matches_list)
 
 match_id = st.selectbox("Choose Match ID: ", matches_list['id'])
 
@@ -36,14 +41,16 @@ with inning_1:
     with batting:
         score=ScoreCard(match_id, inning=inning)
     
-        st.write(score.scorecard_data)
+        st.write(score.batting_data)
         st.write(score.key_batter)
         st.write(score.batting_summary)
-    
+        st.image(f"static/players/{score.key_batter}.png")
+
     with bowling:
         st.write(score.bowler_data)
         st.write(score.key_bowler)
         st.write(score.fall_of_wickets)
+        st.image(f"static/players/{score.key_bowler}.png")
 
 
 with inning_2:
@@ -54,12 +61,14 @@ with inning_2:
     with batting:
         score=ScoreCard(match_id, inning=inning)
     
-        st.write(score.scorecard_data)
+        st.write(score.batting_data)
         st.write(score.key_batter)
         st.write(score.batting_summary)
+        st.image(f"static/players/{score.key_batter}.png")
 
     with bowling:
         st.write(score.bowler_data)
         st.write(score.key_bowler)
         st.write(score.fall_of_wickets)
+        st.image(f"static/players/{score.key_bowler}.png")
     
