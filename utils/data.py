@@ -7,10 +7,83 @@ from utils.read_data import matches
 
 SEASONS = matches['season'].unique()
 
-
 TEAMS = matches['team1'].unique()
 
 STADIUMS = matches['venue'].unique()
+
+IPL_FACTS_BY_SEASON = {
+    2008: ["First Ever IPL: The inaugural season of the IPL was played in 2008 with eight teams, and Rajasthan Royals, led by Shane Warne, won the championship.",
+        "First IPL Century: Brendon McCullum scored the first-ever IPL century, hitting 158* for Kolkata Knight Riders against Royal Challengers Bangalore.",
+        "First Hat-trick: Amit Mishra of Delhi Daredevils took the first-ever hat-trick in IPL history."],
+
+    2009: ["Winner: Deccan Chargers won their first IPL title, defeating Royal Challengers Bangalore in the final.",
+        "Player of the Tournament: Adam Gilchrist was named Player of the Tournament for his explosive batting performance.",
+        "First Overseas IPL Player to Win the Orange Cap: Matthew Hayden, from Chennai Super Kings, won the Orange Cap with 572 runs.",
+        "First IPL Final in South Africa: Due to security issues in India, IPL 2009 was moved to South Africa."],
+
+    2010: ["Winner: Chennai Super Kings won their first IPL title under MS Dhoni.",
+           "First Ever IPL Final at DY Patil Stadium: The final was held at DY Patil Stadium, Navi Mumbai."],
+    
+    2011: ["Winner: Chennai Super Kings won their second consecutive title.",
+           "Highest Score by a Team: Royal Challengers Bangalore set the record for the highest total in IPL history at that time with 215/1 against Delhi Daredevils.",
+            "First Ever IPL Team to Reach 3 Consecutive Finals: Chennai Super Kings became the first team to make it to the final three years in a row."],
+
+    2012: ["First Time KKR Won the Title: Kolkata Knight Riders, under Gautam Gambhir, won their first-ever IPL title.",
+            "Most Sixes in a Season: Chris Gayle hit 59 sixes during IPL 2012.",
+            "Winner: Kolkata Knight Riders won their first title, defeating Chennai Super Kings."],
+   
+    2013: ["Winner: Mumbai Indians won their first IPL title.",
+           "First IPL Season to Feature a Major Scandal: The 2013 season was marred by the spot-fixing and betting scandal, leading to suspensions of some players.",
+            "First Time Mumbai Indians Defeated Chennai Super Kings in the Final: Mumbai defeated Chennai in the final to win their first title."],
+   
+    2014: ["Winner: Kolkata Knight Riders won their second IPL title, defeating Kings XI Punjab in the final.",
+           "Highest Total in a Match: Royal Challengers Bangalore scored the highest total of the season, 215/1, against Sunrisers Hyderabad.",
+            "Most Sixes in a Match: The match between Royal Challengers Bangalore and Sunrisers Hyderabad saw 21 sixes, the most in a match during this season."],
+    
+    2015: ["Winner: Mumbai Indians won their second title, defeating Chennai Super Kings.",
+           "Most Boundaries in a Season: Chris Gayle (Royal Challengers Bangalore) hit the most boundaries in the season, with 92.",
+            "Highest Run Chase: Mumbai Indians chased down a massive total of 190/4 against Rajasthan Royals."],
+    
+    2016: ["Chennai Super Kings (CSK) were banned from the IPL for two years (2016-2017) due to their involvement in a match-fixing scandal.",
+           "Winner: Sunrisers Hyderabad won their first IPL title.",
+           "Most Sixes in a Season: Chris Gayle hit the most sixes in the 2016 season with 41 sixes.",
+           ],
+    
+    2017: ["Winner: Mumbai Indians won their third IPL title.",
+           "Most Matches Won by a Team: Mumbai Indians won 10 matches in the league phase of IPL 2017."
+           "Orange Cap Winner: David Warner (Sunrisers Hyderabad) scored 641 runs."],
+    
+    2018: ["Winner: Chennai Super Kings won their third IPL title.",
+           "Highest Partnership: The highest partnership in IPL 2018 was between Shane Watson and Ambati Rayudu (CSK), which contributed significantly in their title-winning campaign.",
+           "First Time CSK Returned After Ban: Chennai Super Kings made a successful return after a two-year ban and won the IPL in their comeback season."],
+    
+    2019: ["Winner: Mumbai Indians won their fourth IPL title.",
+           "Most Sixes: Kieron Pollard (Mumbai Indians) hit 31 sixes in the season.",
+           "First IPL Final Decided by Super Over: The final between Mumbai Indians and Chennai Super Kings ended in a nail-biting Super Over, with Mumbai emerging victorious."],
+    
+    2020: ["Winner: Mumbai Indians won their fifth IPL title.",
+           "Most Runs by a Captain: Rohit Sharma (Mumbai Indians) scored the most runs among IPL captains.",
+           "First IPL Played in the UAE: The 2020 IPL season was moved to the UAE due to the pandemic, and it was the second time the IPL was played outside India."],
+    
+    2021: ["Winner: Chennai Super Kings won their fourth IPL title.",
+           "First Time a Team Won After Losing the Previous Final: Chennai Super Kings became the first team to win the IPL after losing the previous season's final.",
+           "Most Sixes: Chris Gayle (Punjab Kings) hit the most sixes in the season."],
+    
+    2022: ["Winner: Gujarat Titans won their first-ever IPL title in their debut season, defeating Rajasthan Royals in the final.",
+           "Most Runs by a Team: Rajasthan Royals scored the highest total of the season (222/2) against Gujarat Titans.",
+           "Debut Team: Gujarat Titans and Lucknow Super Giants were the two new teams that joined the IPL in 2022."],
+    
+    2023: ["Winner: Chennai Super Kings won their fifth IPL title, the most by any team, defeating Gujarat Titans in the final.",
+           "Record Final: The IPL 2023 final between Chennai Super Kings and Gujarat Titans saw the highest-ever number of runs scored in a final, with 211 runs being scored.",
+           "Player of the Tournament: Ruturaj Gaikwad (Chennai Super Kings) was awarded Player of the Tournament for his consistent performance in the season."],
+    
+    2024: ["Gujarat Titans' Lowest Total: Gujarat Titans set the record for the lowest total in IPL 2024, scoring just 89 runs against Delhi Capitals​",
+           "Sunrisers Hyderabad's Record Total: In an exhilarating match, Sunrisers Hyderabad set the highest team total in IPL history by scoring 287 runs against Royal Challengers Bangalore (RCB)​",
+            "Travis Head's Fastest Century: Travis Head became the fourth player in IPL history to score the fastest century, joining the ranks of Chris Gayle, Yusuf Pathan, and David Miller​",
+            "Mayank Yadav's Pace: Mayank Yadav bowled the fastest delivery of IPL 2024, clocking in at 156.7 km/h, making him the fourth fastest in IPL history​",
+            "Home Advantage in Openers: The home teams won all eight opening matches of the IPL 2024 season, a strong statement about the home ground advantage​"]
+}
+
 
 PLAYERS = ['A Ashish Reddy', 'A Badoni', 'A Chandila', 'A Chopra',
        'A Choudhary', 'A Dananjaya', 'A Flintoff', 'A Kamboj', 'A Kumble',
