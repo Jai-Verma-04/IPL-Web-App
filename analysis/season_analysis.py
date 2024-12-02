@@ -7,12 +7,11 @@
 # -------------------------------------------------------------------------------------------------------
 
 
-import random
 import pandas as pd
 
 # importing read_data from utils to read the data from the parquet files
 from utils.read_data import matches, deliveries
-from utils.data import IPL_FACTS_BY_SEASON
+
 
 deliveries_with_season = pd.merge(
                             deliveries, matches[['id', 'season']], 
@@ -143,6 +142,28 @@ def total_4s(season: int) -> int:
             ].shape[0]
 
 
+def most_wins_in_league_matches(season: int) -> tuple:
+    '''
+    The function takes season as input and returns the team that has the highest number of league match wins in that season.
+    
+    #### Parameter: 
+    season
+
+    #### Returns: 
+    tuple: (Team name, Wins)
+    Team with the highest league match wins in the selected season
+    '''
+    team = matches[
+                (matches.season == season) & (matches.match_type == 'League')
+            ]['winner'].value_counts().idxmax()
+    
+    wins = matches[
+                (matches.season == season) & (matches.match_type == 'League')
+            ]['winner'].value_counts().max()
+    
+    return team, wins
+
+
 def final_match(season: int) -> pd.DataFrame:
     '''
     Helper function takes season as input and returns the final match of the season.
@@ -156,7 +177,7 @@ def final_match(season: int) -> pd.DataFrame:
     match = matches[
                 (matches.match_type == 'Final') & (matches.season == season)
             ][
-                ['id', 'team1', 'team2', 'winner']
+                ['team1', 'team2', 'winner']
             ].reset_index(drop=True)
     
     return match
@@ -193,11 +214,3 @@ def runner_up(season: int) -> str:
         return match.team2.iloc[0]
     
     return match.team1.iloc[0]
-
-def random_fact(season: int) -> str:
-    '''
-    Returns a random fact for the selected season
-    '''
-    fact = random.choice(IPL_FACTS_BY_SEASON.get(season))
-    
-    return fact
