@@ -204,7 +204,9 @@ def highest_team_score(team: str) -> tuple:
 
     target_runs = filtered_matches.loc[max_index, 'target_runs']
 
-    return team2, target_runs
+    venue = filtered_matches.loc[max_index, 'venue']
+
+    return team2, target_runs, venue
 
 
 def total_6s(team: str) -> int:
