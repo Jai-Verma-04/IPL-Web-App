@@ -7,3 +7,5 @@ st.write("Welcome to IPL Web App Project")
 st.info("""The Home Page is currently under construction. 
         Checkout Season Wise Stats and Generate Scorecard page from the sidebar
         """)
+
+st.info("Checkout the repo at: https://github.com/Jai-Verma-04/IPLAnalytica", )
