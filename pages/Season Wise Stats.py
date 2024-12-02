@@ -1,6 +1,6 @@
 import streamlit as st
 from analysis import season_analysis as season
-from utils.navigation import custom_sidebar_navigation
+# from utils.navigation import custom_sidebar_navigation
 from utils.data import SEASONS
 from utils.page_layout import header, footer
 from utils.image_markdown import img_to_html
