@@ -6,7 +6,7 @@ from utils.page_layout import header, footer
 from utils.image_markdown import img_to_html
 
 st.set_page_config(page_title="Season wise Stats", page_icon=":VS:", layout="wide", initial_sidebar_state="collapsed")
-custom_sidebar_navigation("Season Wise Stats")
+# custom_sidebar_navigation("Season Wise Stats")
 
 header(title="Season Wise Statistics", description="Get seasonal data", right_image="static/icons/ipl logo.png")
 

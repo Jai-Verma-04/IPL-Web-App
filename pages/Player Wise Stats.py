@@ -4,7 +4,7 @@ from utils.data import PLAYERS
 from utils.navigation import custom_sidebar_navigation
 
 st.set_page_config(page_title="Player Wise Stats", page_icon="🤵", layout = "wide", initial_sidebar_state="collapsed")
-custom_sidebar_navigation("Player Wise Stats")
+# custom_sidebar_navigation("Player Wise Stats")
 
 img_column, title_column = st.columns([0.3, 0.7], gap='medium', vertical_alignment='top')
 
