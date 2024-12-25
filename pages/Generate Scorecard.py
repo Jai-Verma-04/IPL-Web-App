@@ -112,13 +112,13 @@ def display_results(inning):
         with col_1[0]:
             st.write("Total Overs: ", score.batting_summary[0])
         with col_1[1]:
-            st.write("Total Runs: ", score.batting_summary[1])
+            st.write("Total Runs: ", str(score.batting_summary[1]))
         with col_1[2]:
-            st.write("Total Wickets: ", score.batting_summary[2])
+            st.write("Total Wickets: ", str(score.batting_summary[2]))
         with col_1[3]:
-            st.write("Run Rate: ", score.batting_summary[3])
+            st.write("Run Rate: ", str(score.batting_summary[3]))
         with col_1[4]:
-            st.write("Extras: ", score.batting_summary[4])
+            st.write("Extras: ", str(score.batting_summary[4]))
         
     with bowling:
         cols = st.columns([2, 1, 1], gap='small')
