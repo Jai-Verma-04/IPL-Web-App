@@ -360,8 +360,8 @@ class ScoreCard:
         #Find the total runs conceded by extras and number of extras given by the bowling team.
         extras = self.inning_df['extras_type'].value_counts().to_dict()
         extras_total_runs = sum(extras.values())
-
-        return f"{int(no_of_overs)}.{int((no_of_overs * 6) % 6)}", total_runs, wickets, run_rate, extras_total_runs, extras
+        total_overs = f"{int(no_of_overs)}.{int((no_of_overs * 6) % 6)}"
+        return total_overs, total_runs, wickets, run_rate, extras_total_runs, extras
     
 # ------------------------------------------------------------------------------------------------------------------------
 
