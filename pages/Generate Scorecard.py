@@ -69,7 +69,7 @@ with cols[1]:
 
     with col[1]:
         team = a.result.split()[0]
-        st.image(f"static/stadiums/{a.venue[0]}.png", use_column_width=True)
+        st.image(f"static/stadiums/{a.venue[0]}.png")
         st.write(f"Venue: {a.venue[0].split(',')[0].strip()}, {a.venue[1]}")
 
 st.divider()
