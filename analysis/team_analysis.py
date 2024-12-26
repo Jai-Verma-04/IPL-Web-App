@@ -104,9 +104,11 @@ def matches_per_season(team: str) -> pd.DataFrame:
     Returns a table with columns 'season', 'count'.
     '''
     
-    return matches[
+    table = matches[
             (matches.team1 == team) | (matches.team2 == team)
             ]['season'].value_counts().sort_index().reset_index()
+    table['season'] = table['season'].astype(str)
+    return table.T
     
 
 def most_matches_won_at_venue(team: str) -> tuple:
@@ -138,9 +140,14 @@ def number_of_trophies(team: str) -> int:
     #### Returns:
     Number of IPL Trophies won by the selected team.
     '''
-    return matches[
+    try:
+        trophies = matches[
             matches.match_type == 'Final'
             ]['winner'].value_counts().loc[team]
+    except:
+        trophies = 0
+
+    return trophies
 
 
 def match_and_toss(team: str) -> pd.DataFrame:
@@ -254,7 +261,7 @@ def top3_run_scorers(team: str) -> pd.DataFrame:
                     )['batsman_runs'].sum().reset_index().sort_values(
                                                             by='batsman_runs', 
                                                             ascending=False
-                                                            ).head(3)
+                                                            ).head(3).reset_index(drop=True)
     
     return top_scorers
 
