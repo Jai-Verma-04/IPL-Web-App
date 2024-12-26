@@ -4,7 +4,7 @@ from utils.data import SEASONS
 from utils.page_layout import header, footer
 from utils.image_markdown import img_to_html
 
-st.set_page_config(page_title="Season wise Stats", page_icon="🆚", layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="Season wise Stats", page_icon="☁️", layout="wide", initial_sidebar_state="collapsed")
 
 header(title="Season Wise Statistics", description="1. Explore how each IPL season unfolded, and who became the crowned team. <br>\
 2. Analyze top run-scorers, wicket-takers, and key trends across all IPL seasons. <br> 3. Start by selecting an year from the drop-down below 👇", right_image="static/icons/ipl logo.png")
