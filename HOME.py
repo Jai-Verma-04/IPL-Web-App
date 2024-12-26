@@ -10,6 +10,10 @@ header(title="Welcome to IPLAnalytica", description="""
 """)
 
 st.markdown("""
+        <h3>👈 Start exploring pages from the sidebar</h3>
+""", unsafe_allow_html=True)
+
+st.markdown("""
 ## Welcome to IPLAnalytica Web App!
 * This project is a data analysis and visualization tool for exploring statistics related to the Indian Premier League (IPL) Cricket data. 
 
