@@ -293,7 +293,7 @@ def favorite_teams_to_score(player_name: str) -> pd.DataFrame:
                 ].sort_values(
                     by = 'batsman_runs', 
                     ascending=False
-                ).head(3)
+                ).head(3)[['bowling_team', 'batsman_runs']].reset_index(drop=True)
 
     return favorites
 
@@ -318,7 +318,7 @@ def favorite_team_for_bowlers(player_name: str) -> pd.DataFrame:
                 ].sort_values(
                     by = 'is_wicket', 
                     ascending=False
-                ).head(3)
+                ).head(3)[['batting_team', 'is_wicket']].reset_index(drop=True)
 
     return favorites
 
