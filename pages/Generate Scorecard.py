@@ -85,7 +85,7 @@ def display_results(inning):
     batting, bowling = st.tabs(['Batting', 'Bowling'])
     
     with batting:
-        cols = st.columns([2, 1], gap='medium')
+        cols = st.columns([4, 1], gap='medium')
 
         with cols[0]:
             st.markdown("""
@@ -95,7 +95,7 @@ def display_results(inning):
             """, unsafe_allow_html=True)
 
             score=ScoreCard(match_id, inning=inning)
-            st.write(score.batting_data)
+            st.table(score.batting_data)
 
         with cols[1]:
             st.image(f"static/players/{score.key_batter}.png", width=250)
@@ -128,7 +128,7 @@ def display_results(inning):
                 <strong>Bowling Scorecard</strong>
             </div>  
             """, unsafe_allow_html=True)            
-            st.write(score.bowler_data)
+            st.table(score.bowler_data)
 
         with cols[1]:
             st.markdown("""
