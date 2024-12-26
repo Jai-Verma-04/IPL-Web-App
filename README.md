@@ -61,14 +61,14 @@ The app will open in your web browser, where you can navigate through the variou
 
 # Screenshots of the website 👇
 <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-  <img src="https://i.imgur.com/Cx1bytH.png" style="width: 300px; margin: 5px;" />
-  <img src="https://i.imgur.com/1qoPaxL.png" style="width: 300px; margin: 5px;" />
-  <img src="https://i.imgur.com/zp852WF.png" style="width: 300px; margin: 5px;" />
-  <img src="https://i.imgur.com/rVBKD2A.png" style="width: 300px; margin: 5px;" />
-  <img src="https://i.imgur.com/o8nCLxX.png" style="width: 300px; margin: 5px;" />
-  <img src="https://i.imgur.com/ZVygxSD.png" style="width: 300px; margin: 5px;" />
-  <img src="https://i.imgur.com/wzu7tZg.png" style="width: 300px; margin: 5px;" />
-  <img src="https://i.imgur.com/jDPRUZG.png" style="width: 300px; margin: 5px;" />
+  <img src="https://i.imgur.com/Cx1bytH.png" style="width: 300px; margin: 15px;" />
+  <img src="https://i.imgur.com/1qoPaxL.png" style="width: 300px; margin: 15px;" />
+  <img src="https://i.imgur.com/zp852WF.png" style="width: 300px; margin: 15px;" />
+  <img src="https://i.imgur.com/rVBKD2A.png" style="width: 300px; margin: 15px;" />
+  <img src="https://i.imgur.com/o8nCLxX.png" style="width: 300px; margin: 15px;" />
+  <img src="https://i.imgur.com/ZVygxSD.png" style="width: 300px; margin: 15px;" />
+  <img src="https://i.imgur.com/wzu7tZg.png" style="width: 300px; margin: 15px;" />
+  <img src="https://i.imgur.com/jDPRUZG.png" style="width: 300px; margin: 15px;" />
 </div>
 
 ## Lessons Learned
