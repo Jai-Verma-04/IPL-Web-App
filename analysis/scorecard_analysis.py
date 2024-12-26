@@ -215,7 +215,7 @@ class ScoreCard:
 
             # Batter Strike Rate: The number of runs scored per 100 balls faced. [Higher is better]
             if balls != 0:
-                strike_rate = score/balls * 100
+                strike_rate = round(score/balls * 100, 2)
             # if the batter has not faced any balls, the strike rate will be zero
             else:       
                 strike_rate = 0
@@ -388,8 +388,8 @@ class ScoreCard:
         2. Overs Bowled
         3. Dot balls bowled
         4. Runs conceded
-        5.Wickets taken
-        6.Bowling economy
+        5. Wickets taken
+        6. Bowling economy
         '''
 
 
@@ -418,7 +418,7 @@ class ScoreCard:
             wickets = self.inning_df[(self.inning_df['bowler'] == bowler) & (self.inning_df['is_wicket'] == 1) & (self.inning_df['dismissal_kind'] != 'run out')]['is_wicket'].count()
             
             # Calculates the bowling economy: Runs conceded / Overs bowled by the bowler.
-            economy = runs/(overs+(remaining_balls/6))
+            economy = round(runs/(overs+(remaining_balls/6)), 2)
 
             # Create a temporary DataFrame for the current batter's data
             temp_df = pd.DataFrame({
