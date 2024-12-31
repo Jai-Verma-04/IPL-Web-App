@@ -14,6 +14,8 @@ Welcome to IPLAnalytica Web App!
 
 * The project is built upon the [streamlit](https://streamlit.io/) app framework to create a web app and help users better understand the insights gained from the data analysis of the [IPL Data](https://www.kaggle.com/datasets/patrickb1912/ipl-complete-dataset-20082020) using Python's [Pandas](https://pandas.pydata.org/) library.
 
+* To find images for players/stadiums/team logos the project uses the [Google-Images-Search](https://pypi.org/project/Google-Images-Search/) Python library that uses Google [Custom Search API](https://console.developers.google.com/).
+
 ## Accessing the project:
 To access the webpage of this project, [click here](https://iplanalytica.streamlit.app/)
 
@@ -47,18 +49,6 @@ streamlit run HOME.py
 ```
 The app will open in your web browser, where you can navigate through the various pages.
 
-
-
-<!-- ## Screenshots
-![Home page](https://i.imgur.com/Cx1bytH.png)
-![Generate Scoracard](https://i.imgur.com/1qoPaxL.png)
-![Head to Head Stats](https://i.imgur.com/zp852WF.png)
-![IPL Summary](https://i.imgur.com/rVBKD2A.png)
-![Player Wise Stats](https://i.imgur.com/o8nCLxX.png)
-![Season Wise Stats](https://i.imgur.com/ZVygxSD.png)
-![Team Wise Stats](https://i.imgur.com/wzu7tZg.png)
-![Venue Wise](https://i.imgur.com/jDPRUZG.png) -->
-
 # Screenshots of the website 👇
 <div style="display: flex; flex-wrap: wrap; justify-content: center;">
   <img src="https://i.imgur.com/Cx1bytH.png" style="width: 300px; margin: 15px;" />
@@ -76,9 +66,17 @@ The app will open in your web browser, where you can navigate through the variou
 
 * The implementation involved applying advanced **data manipulation techniques, including filtering, grouping, and aggregation**, to derive meaningful patterns and trends from the data. 
 
+* To improve performance, the csv files were cleaned and converted to **.parquet data** files which greatly boosts the data reading/writing operations.
+
 * The project also demonstrated the effective use of **Streamlit for deploying an interactive web application**, enabling seamless presentation of insights to users. 
+
+## Known Issues/Bugs
+1. UI not optimized to view from a phone.  
+2. Player images might not exactly match the name of the player (though very few cases).  
+→ This is because the data had the names of the palyers with First name initial and last name.  
+→ For ex. A player named "T Kohli" had the same image as "V Kohli".  
+→ This is because I used google_images_search api to extract these images and it is not feasible to check that each and every player's image matches its name.  
 
 
 ## Feedback
-
-For any **feedback/suggestion/improvement** to the project, you can contact me on my email at [vermajai2004@gmail.com](mailto:vermajai2004@gmail.com)
+For any **feedback/suggestion/improvement** to the project, you can contact me on my email at [vermajai2004@gmail.com](mailto:vermajai2004@gmail.com) or Open a GitHub Issues [here](https://github.com/Jai-Verma-04/IPLAnalytica/issues)
